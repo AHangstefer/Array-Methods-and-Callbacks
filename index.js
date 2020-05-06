@@ -30,11 +30,12 @@ let filterHomeTeam = fifaData.filter((names) => {
  `data` as an argument and returns an array of objects with only 
  finals data */
 
-function getFinals(/* code here */) {
+let getFinals =fifaData.filter((finals) => {
+    return finals.Stage==="Final"
+});
+console.log (getFinals);
 
-    /* code here */
 
-};
 
 /* Task 3: Implement a higher-order function called `getYears` that 
 accepts the callback function `getFinals`, and returns an array called `years`
