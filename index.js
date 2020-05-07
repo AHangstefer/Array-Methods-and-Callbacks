@@ -15,9 +15,9 @@ import { fifaData } from './fifa.js';
 
 
 
-let filterHomeTeam = fifaData.filter((names) => {
-   return names.Year===2014 && names.Stage==="Final"
- });
+let filterHomeTeam = fifaData.filter(
+    (names) => {return names.Year===2014 && names.Stage==="Final"}
+);
  console.log(filterHomeTeam[0]["Home Team Name"]);
  console.log(filterHomeTeam[0]["Away Team Name"]);
  console.log(filterHomeTeam[0]["Home Team Goals"]);
@@ -31,8 +31,9 @@ let filterHomeTeam = fifaData.filter((names) => {
  finals data */
 
 let getFinals = function(data){
-   return data.filter((finals) => {return finals.Stage==="Final"
-});}
+   return data.filter((finals) => {return finals.Stage==="Final"}
+)
+}
 console.log (getFinals(fifaData));
 
 
@@ -41,14 +42,16 @@ console.log (getFinals(fifaData));
 accepts the callback function `getFinals`, and returns an array called `years`
  containing all of the years in the dataset */
 
-function getYears(callback,data){
+function getYears(data, callback){
     const years=[];
-    const final= callback(data)
-    finals.map(function(game)){
-        years.push(game.Year)
+    callback(data).map((games)=> {
+        years.push(games["Year"])
     }
+    
+    ) 
+    return years;  
 };
-console.log(getYears(getFinals,fifaData));
+console.log(getYears(fifaData, getFinals));
 
 
 
