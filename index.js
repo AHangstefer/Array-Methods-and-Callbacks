@@ -94,11 +94,22 @@ Parameters:
  * callback function getYears
  */
 
-function getWinnersByYear(/* code here */) {
+function getWinnersByYear(callback1, callback2){
+  
+  let allYears= callback1(fifaData, getFinals);
+  let country=callback2(fifaData, getFinals);
+  let winners=[];
+  
+ allYears.forEach(
+      (yearValue, index) =>{
+       let countryValue =country[index];
+       
+    winners.push(`In ${yearValue}, ${countryValue} won the world cup!`);
+      })
+      return winners;
+    };
 
-};
-
-getWinnersByYear();
+console.log(getWinnersByYear(getYears, getWinners));
 
 /* Task 7: Create a function called `getCountryWins` that takes
  the parameters `data` and `team initials` and returns the number of
