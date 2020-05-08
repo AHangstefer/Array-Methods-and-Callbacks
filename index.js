@@ -118,13 +118,25 @@ console.log(getWinnersByYear(getYears, getWinners));
 Hint: Investigate your data to find "team initials"!
 Hint: use `.reduce` */
 
-function getCountryWins(/* code here */) {
-
-    /* code here */
-
+function getCountryWins(data, teamInitials) {
+    
+    let wins = data.reduce((acc, game)=> {
+    let winner;
+    if (game["Home Team Goals"] > game["Away Team Goals"]){
+        winner= (game["Home Team Initials"]);
+   } else {
+        winner= (game["Away Team Initials"]);
+   }
+   if (winner===teamInitials){
+       return acc+1;
+   }
+   return acc;
+   }
+    , 0);
+    return wins
 };
 
-getCountryWins();
+console.log(getCountryWins(fifaData, "FRA"));
 
 /* Task 8: Write a function called `getAverageGoals` that accepts a
  parameter `data` and returns the the average number of home team
